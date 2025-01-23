@@ -1,0 +1,87 @@
+clean_code <- 'library(igraph)
+
+nodes <- data.frame(
+    name = c(
+        "Wetlands",
+        "Water Storage",
+        "Flow Regulation",
+        "Soil Properties",
+        "Vegetation",
+        "Peak Flow Reduction",
+        "Mean Flow Reduction",
+        "Event Duration Reduction",
+        "Flow Volume Reduction",
+        "Flood Resilience"
+    ),
+    group = c(
+        "System",
+        "Function",
+        "Function",
+        "Function",
+        "Function",
+        "Service",
+        "Service",
+        "Service",
+        "Service",
+        "Outcome"
+    )
+)
+
+edges <- data.frame(
+    from = c(
+        "Wetlands", "Wetlands", "Wetlands", "Wetlands",
+        "Water Storage", "Water Storage", "Water Storage",
+        "Flow Regulation", "Flow Regulation", "Flow Regulation",
+        "Soil Properties", "Soil Properties",
+        "Vegetation", "Vegetation",
+        "Peak Flow Reduction", "Mean Flow Reduction", 
+        "Event Duration Reduction", "Flow Volume Reduction"
+    ),
+    to = c(
+        "Water Storage", "Flow Regulation", "Soil Properties", "Vegetation",
+        "Peak Flow Reduction", "Mean Flow Reduction", "Flow Volume Reduction",
+        "Peak Flow Reduction", "Mean Flow Reduction", "Event Duration Reduction",
+        "Flow Volume Reduction", "Event Duration Reduction",
+        "Flow Volume Reduction", "Event Duration Reduction",
+        "Flood Resilience", "Flood Resilience",
+        "Flood Resilience", "Flood Resilience"
+    ),
+    weight = rep(1, 18)
+)
+
+g <- graph_from_data_frame(d = edges, vertices = nodes, directed = TRUE)
+
+color_map <- c(
+    "System" = "lightblue",
+    "Function" = "lightgreen",
+    "Service" = "lightyellow",
+    "Outcome" = "lightpink"
+)
+
+vertex_colors <- color_map[nodes$group]
+set.seed(42)
+layout <- layout_with_fr(g)
+
+png("wetland_functions_services.png", width = 1200, height = 800, res = 100)
+plot(g,
+     layout = layout,
+     vertex.size = 30,
+     vertex.color = vertex_colors,
+     vertex.label.cex = 0.7,
+     vertex.label.color = "black",
+     edge.arrow.size = 0.5,
+     edge.width = 2,
+     main = "Wetland Functions and Flood Attenuation Services Network")
+
+legend("bottomright",
+       legend = names(color_map),
+       fill = color_map,
+       title = "Node Types",
+       cex = 0.8)
+dev.off()
+
+degree_cent <- degree(g, mode = "all")
+between_cent <- betweenness(g)
+close_cent <- closeness(g)'
+
+writeLines(clean_code, "wetland_network_analysis.R")
