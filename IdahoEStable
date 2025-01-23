@@ -1,0 +1,73 @@
+#dataframe with function
+functions_services <- data.frame(
+  Function_Service = c(
+    "Water Storage & Delay",
+    "Stream Flow & Temperature Support",
+    "Sediment Retention & Stabilization",
+    "Phosphorus Retention",
+    "Nitrate Removal & Retention",
+    "Carbon Stock",
+    "Aquatic Primary Productivity",
+    "Fish Habitat",
+    "Amphibian & Turtle Habitat",
+    "Waterbird Habitat",
+    "Raptor & Songbird Habitat",
+    "Keystone Mammal Habitat",
+    "Native Plant Habitat, Pollinator Habitat",
+    "Wildfire Resistance",
+    "Cultural or Recreational Importance"
+  ),
+  Definition = c(
+    "Effectiveness for storing runoff or delaying surface water movement.",
+    "Effectiveness for contributing water to streams and maintaining temperature.",
+    "Effectiveness for intercepting and filtering suspended sediments.",
+    "Effectiveness for retaining phosphorus for long periods.",
+    "Effectiveness for retaining and converting nitrate.",
+    "Capacity to store carbon in wetland soils and vegetation.",
+    "Capacity to support aquatic primary productivity.",
+    "Capacity to support fish species and aquatic life.",
+    "Capacity to support amphibians and turtles.",
+    "Capacity to support waterbirds.",
+    "Capacity to support raptors and songbirds.",
+    "Capacity to support keystone mammals like beaver and moose.",
+    "Capacity to support native plants and pollinators.",
+    "Capacity to resist ignition by wildfire.",
+    "Potential for recreation, education, or research."
+  ),
+  Potential_Values = c(
+    "Flood control, maintain ecological systems.",
+    "Support fish and aquatic life.",
+    "Maintain water quality, protect structures from erosion.",
+    "Maintain water quality.",
+    "Maintain water quality.",
+    "Maintain global climate.",
+    "Support food chains in receiving waters.",
+    "Support biodiversity and ecological systems.",
+    "Support biodiversity and ecological systems.",
+    "Support biodiversity and ecological systems.",
+    "Maintain regional biodiversity.",
+    "Maintain biodiversity, hunting opportunities.",
+    "Maintain biodiversity, support food chains.",
+    "Protect vulnerable infrastructure.",
+    "Recreation, education, and research benefits."
+  ),
+  Scoring_Criteria = c(
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher.",
+    "0 to 10 scale, Lower, Moderate, or Higher."
+  )
+)
+
+print(functions_services)
