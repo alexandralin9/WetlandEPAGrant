@@ -1,0 +1,27 @@
+writeLines('library(jsonlite)
+library(igraph)
+
+paste_data <- fromJSON("paste.json")
+wetland_data <- fromJSON("WetlandTraitDriver.json")
+
+edges <- data.frame(
+  from = paste_data$links$source,
+  to = paste_data$links$target,
+  weight = paste_data$links$value
+)
+
+vertices <- unique(c(paste_data$links$source, paste_data$links$target))
+vertices_df <- data.frame(name = vertices)
+
+g <- graph_from_data_frame(d = edges, vertices = vertices_df, directed = TRUE)
+
+png("wetland_network.png", width = 1200, height = 800)
+plot(g, 
+     layout = layout_with_fr(g),
+     vertex.size = 3,
+     vertex.label.cex = 0.6,
+     edge.arrow.size = 0.3,
+     main = "Wetland Trait Driver Network")
+dev.off()
+
+degree_centrality <- degree(g, mode = "all", normalized = TRUE)\
